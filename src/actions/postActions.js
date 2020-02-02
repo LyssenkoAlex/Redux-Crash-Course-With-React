@@ -1,9 +1,7 @@
-import { FETCH_POSTS, NEW_POST } from './types.js';
+import { FETCH_POSTS, NEW_POST } from "./types";
 
 export const fetchPosts = () => dispatch => {
-  console.log('fetching');
-
-  fetch('https://jsonplaceholder.typicode.com/posts')
+  fetch("https://jsonplaceholder.typicode.com/posts")
     .then(res => res.json())
     .then(posts =>
       dispatch({
@@ -13,26 +11,11 @@ export const fetchPosts = () => dispatch => {
     );
 };
 
-// export function fetchPosts() {
-//   return function(dispatch) {
-//     fetch('https://jsonplaceholder.typicode.com/posts')
-//       .then(res => res.json())
-//       .then(posts =>
-//         dispatch({
-//           type: FETCH_POSTS,
-//           payload: posts
-//         })
-//       );
-//   };
-// }
-
 export const createPost = postData => dispatch => {
-  console.log('action called');
-
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
     headers: {
-      'content-type': 'application/json'
+      "content-type": "application/json"
     },
     body: JSON.stringify(postData)
   })

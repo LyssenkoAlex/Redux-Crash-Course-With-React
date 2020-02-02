@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createPost } from '../actions/postActions.js';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createPost } from "../actions/postActions";
 
-class PostForm extends Component {
+class Postform extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      body: ''
+      title: "",
+      body: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -21,6 +21,7 @@ class PostForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+
     const post = {
       title: this.state.title,
       body: this.state.body
@@ -32,11 +33,10 @@ class PostForm extends Component {
   render() {
     return (
       <div>
-        <h1>Add Posts</h1>
+        <h1>Add Post</h1>
         <form onSubmit={this.onSubmit}>
           <div>
-            <label>Title: </label>
-            <br />
+            <label>Title: </label> <br />
             <input
               type="text"
               name="title"
@@ -44,19 +44,14 @@ class PostForm extends Component {
               value={this.state.title}
             />
           </div>
-
-          <br />
-
           <div>
-            <label>Body: </label>
-            <br />
+            <label>Body: </label> <br />
             <textarea
               name="body"
               onChange={this.onChange}
               value={this.state.body}
             />
           </div>
-          <br />
           <button type="submit">Submit</button>
         </form>
       </div>
@@ -64,11 +59,8 @@ class PostForm extends Component {
   }
 }
 
-PostForm.propTypes = {
+Postform.propTypes = {
   createPost: PropTypes.func.isRequired
-};
+}
 
-export default connect(
-  null,
-  { createPost }
-)(PostForm);
+export default connect(null, { createPost })(Postform);
